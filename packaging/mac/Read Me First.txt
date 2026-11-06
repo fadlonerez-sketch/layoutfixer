@@ -1,0 +1,114 @@
+LAYOUT FIXER FOR MAC
+====================
+
+Typed Hebrew while the keyboard was on English (or the other way round)?
+Hold Command (⌘), press Fn (the 🌐 key), and let go of both.
+The text in the field you are typing in is converted key-for-key to the other
+keyboard layout, replaced in place, and the keyboard switches language, so you
+can keep typing.
+
+    typed (keyboard on English):   akuo' nv eurv?
+    after ⌘ + Fn:                  שלום, מה קורה?
+
+It runs entirely on your Mac: no internet, no account, no AI, no translation
+service. It converts keys, it does not translate words.
+
+Needs: macOS 12 Monterey or later, Apple silicon (M1 and later) or Intel.
+
+
+1. INSTALL
+----------
+1. Double-click LayoutFixer-macOS.zip if it isn't unzipped yet.
+2. Drag "Layout Fixer.app" into your Applications folder.
+   (Do this before opening it. macOS remembers the permission for this place.)
+
+3. Allow the app to open. It is not signed with a paid Apple developer
+   certificate, so macOS blocks it the first time. Choose ONE of these:
+
+   a) Terminal (works on every macOS version): open Terminal
+      (Applications > Utilities) and paste this line, then press Return:
+
+        xattr -dr com.apple.quarantine "/Applications/Layout Fixer.app"
+
+      Then double-click Layout Fixer in Applications.
+
+   b) Without Terminal: double-click Layout Fixer. When macOS says it can't
+      be opened, click Done/OK, open System Settings > Privacy & Security,
+      scroll down to "Layout Fixer was blocked..." and click "Open Anyway",
+      then confirm with your password and click "Open".
+      (On macOS 12-14 you can instead right-click the app > Open > Open.)
+
+
+2. ALLOW ACCESSIBILITY (needed once)
+------------------------------------
+Layout Fixer needs to see the ⌘ + Fn keys and to read and change the text
+of the field you are typing in. macOS calls this "Accessibility".
+
+1. On first start macOS shows: "Layout Fixer would like to control this
+   computer using accessibility features". Click "Open System Settings".
+   (Or: Layout Fixer's menu-bar icon אA > Settings... > Open Accessibility Settings.)
+2. Turn on the switch next to "Layout Fixer". Enter your password if asked.
+3. Within a few seconds a small note appears at the bottom right:
+   "Layout Fixer is running - press Cmd+Fn in a text field".
+   If it doesn't, quit Layout Fixer (menu-bar icon > Quit) and open it again.
+
+
+3. USE IT
+---------
+* Nothing selected + ⌘ Fn  -> the whole text field is converted
+                               (up to 10,000 characters).
+* Some text selected + ⌘ Fn -> only the selection is converted.
+* ⌘ Fn again later          -> converts back (works as an undo). ⌘Z also undoes.
+
+Press and hold ⌘, press Fn, then let go of both, without pressing any other
+key in between. (⌘ + Fn + an arrow key is still ⌘ + Home/End as usual.)
+
+Which way it converts depends only on the keyboard that is active (English or
+Hebrew): with the English keyboard the text becomes what the same keys type on
+the Hebrew keyboard, and the other way round. Both keyboards should be added
+in System Settings > Keyboard > Text Input > Input Sources > Edit.
+
+The אA icon in the menu bar has: Enabled (turn the shortcut off/on),
+Settings..., Open log folder, Quit. In Settings you can also choose
+"Start Layout Fixer when I log in". There is no Dock icon; opening the app
+again while it is running shows nothing new - use the menu-bar icon.
+
+
+4. ABOUT THE Fn / 🌐 KEY
+------------------------
+* ⌘ + Fn works with Apple keyboards (MacBook keyboards, Magic Keyboard).
+  Most other keyboards keep their Fn key to themselves and never tell the Mac
+  it was pressed. With such a keyboard set a second shortcut:
+  menu-bar icon > Settings... > "Also use (keyboards without Fn)", click the
+  box and press for example Control + Option + Space.
+* macOS gives the 🌐/Fn key its own job (System Settings > Keyboard >
+  "Press 🌐 key to"). If pressing ⌘ + Fn ALSO opens the emoji picker, starts
+  dictation or switches the keyboard, set "Press 🌐 key to" to "Do Nothing".
+  (Layout Fixer reads the keyboard language at the moment you press the keys,
+  so a switch made by macOS does not reverse the conversion.)
+
+
+5. IF SOMETHING DOESN'T WORK
+----------------------------
+* A note at the bottom right always says what happened, e.g. "Password fields
+  are not changed" or "Terminal windows are not supported".
+* "Layout Fixer needs the Accessibility permission": see step 2. If the switch
+  is already on, turn it off and on again, or remove Layout Fixer from the
+  list with the "-" button and open the app again. (Needed again after you
+  replace the app with a new copy.)
+* Nothing happens at all on ⌘ + Fn: check that the menu-bar icon is blue (not
+  grey = disabled), and see section 4 about Fn on non-Apple keyboards.
+* Log: menu-bar icon > Open log folder > layoutfixer.log. It records each step
+  (never the text itself).
+* Self-test (changes nothing) - paste in Terminal:
+    "/Applications/Layout Fixer.app/Contents/MacOS/LayoutFixer" --selftest ~/Desktop/layoutfixer-selftest.json
+  and send the file layoutfixer-selftest.json from your Desktop to whoever
+  gave you the app.
+
+
+6. UNINSTALL
+------------
+Quit it (menu-bar icon > Quit), delete "Layout Fixer.app", and optionally:
+~/Library/Application Support/LayoutFixer (settings and log),
+~/Library/LaunchAgents/local.layoutfixer.LayoutFixer.plist (start at login),
+and its entry in System Settings > Privacy & Security > Accessibility.

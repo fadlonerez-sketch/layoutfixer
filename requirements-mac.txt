@@ -1,0 +1,18 @@
+# macOS runtime dependencies, bundled into "Layout Fixer.app" by tools/build_mac_app.py
+# (universal2 wheels for CPython 3.13, downloaded on any OS; hashes as published on PyPI).
+# PySide6 6.9 is the newest release whose binaries run on macOS 12+: the 6.10/6.11 binding modules are
+# built for macOS 15 and 6.12's for macOS 26, whatever their wheel tags say (checked by verify_mac_bundle.py).
+PySide6-Essentials==6.9.3 \
+    --hash=sha256:ad3664ff0ced9f92ed7872e512c86328894d29f262e6c3400400232a36dda357
+shiboken6==6.9.3 \
+    --hash=sha256:e9b240828790b8e21a50e66449a5aa8b99f9b8a538c80c1a325fa04f8364985e
+pyobjc-core==12.2.2 \
+    --hash=sha256:950bd2d9c74634398c4e3d24ef2f213d4e23d705083697464fa67afedc53c1ad
+pyobjc-framework-Cocoa==12.2.2 \
+    --hash=sha256:600b1723184ca094931330e79355274949965460e23de38628d601b5a967baf9
+pyobjc-framework-Quartz==12.2.2 \
+    --hash=sha256:0ec9751904ef975bf0789d760dc4fadcb400edc4ffe4a736eb54971968babe5c
+pyobjc-framework-ApplicationServices==12.2.2 \
+    --hash=sha256:3b5693a377480cf127caa1c8c835b8620896971029c545d99d01aa31a2c38159
+pyobjc-framework-CoreText==12.2.2 \
+    --hash=sha256:dbd0f288a859e359ee8e7ccf45bc2c489f38ae1087c21468b61d700433e0c91b
