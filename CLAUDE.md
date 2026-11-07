@@ -2,7 +2,8 @@
 
 Windows 10/11 tray app: Ctrl+Space converts the focused field's text between the US and Hebrew
 keyboard layouts (physical keys), replaces it in place and switches the input language.
-Python 3.14, PySide6, ctypes, comtypes (UI Automation). See README.md for behaviour.
+Python 3.14 (Windows build, tests and venv; the shared code must stay 3.13-compatible because the macOS
+bundle ships Python 3.13), PySide6, ctypes, comtypes (UI Automation). See README.md for behaviour.
 
 ## Commands
 

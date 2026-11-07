@@ -4,7 +4,8 @@ The same tool as on Windows (see README.md): a shortcut converts the focused fie
 between the English and Hebrew keyboard layouts, replaces it in place and switches the keyboard
 language. On a Mac the shortcut is **⌘ + Fn** (hold Command, press Fn/🌐, release both).
 
-The package for a Mac user is `dist/mac/LayoutFixer-macOS.zip`: "Layout Fixer.app" (universal:
+The package for a Mac user is `dist/mac/LayoutFixer-macOS.zip`, built with `build_mac.bat` (prebuilt packages
+are not published yet): "Layout Fixer.app" (universal:
 Apple silicon and Intel, macOS 12+) and "Read Me First.txt" with install and usage instructions.
 Nothing to install besides the app; no Python, Xcode or Homebrew needed.
 
