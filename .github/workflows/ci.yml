@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    env:
+      QT_QPA_PLATFORM: offscreen
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest==9.1.1 pytest-qt==4.5.0 ruff==0.17.4
+      - name: Lint
+        run: python -m ruff check .
+      # Pure and simulated tests only (Windows + macOS logic with fakes). Nothing here registers a hotkey,
+      # sends keys, loads a keyboard layout, or touches the clipboard or the registry. The three deselected
+      # engine tests build a real WindowsEnvironment (UI Automation).
+      - name: Tests (pure and simulated)
+        run: >-
+          python -m pytest -p no:cacheprovider
+          tests/test_converter.py tests/test_mapping.py tests/test_clipboard_win32_logic.py
+          tests/test_mac_keymap.py tests/test_mac_hotkeys.py tests/test_mac_env.py
+          tests/test_engine.py tests/test_one_press.py tests/test_clipboard.py
+          --deselect tests/test_engine.py::test_field_found_after_chromium_builds_its_accessibility_tree
+          --deselect tests/test_engine.py::test_no_text_field_gives_up_after_the_settle_time
+          --deselect tests/test_engine.py::test_focus_moving_elsewhere_stops_the_retries
