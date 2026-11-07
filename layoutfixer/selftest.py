@@ -78,7 +78,7 @@ def _checks() -> dict:
     from PySide6.QtWidgets import QApplication
     import os
     os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-    app = QApplication.instance() or QApplication([])
+    app = QApplication.instance() or QApplication([])  # noqa: F841 - keep the application alive
     from .ui.icon import app_icon
     c["qt_ui"] = not app_icon().isNull()
     return report

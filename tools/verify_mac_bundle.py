@@ -19,7 +19,6 @@ from __future__ import annotations
 import ast
 import importlib.util
 import plistlib
-import posixpath
 import re
 import stat
 import sys
