@@ -145,6 +145,7 @@ class SettingsWindow(QWidget):
 
         self.layouts = QLabel()
         self.layouts.setWordWrap(True)
+        self.layouts.setTextFormat(Qt.TextFormat.RichText)  # "&nbsp;" alone is not auto-detected as rich text
         self.message = QLabel()
         self.message.setWordWrap(True)
         save = QPushButton("Save")
